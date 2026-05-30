@@ -2,7 +2,6 @@
 
 import Profile from "@/components/profile";
 import { ModeToggle } from "@/components/toggle";
-import TopNavigation from "@/components/top-navigation";
 import { Button } from "@/components/ui/button";
 import { useRef } from "react";
 

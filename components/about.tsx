@@ -22,7 +22,7 @@ import {
 
 const experiences = [
 	{
-		period: "2021 — 2022",
+		period: "2024 — 2025",
 		title: "Python Developer — Student List System",
 		org: "BSIT First Year, Semester 1",
 		description:
@@ -30,7 +30,7 @@ const experiences = [
 		active: true,
 	},
 	{
-		period: "2021 — 2022",
+		period: "2024 — 2025",
 		title: "Java Developer — Banking System",
 		org: "BSIT First Year, Semester 2",
 		description:
@@ -38,7 +38,7 @@ const experiences = [
 		active: true,
 	},
 	{
-		period: "2022 — 2023",
+		period: "2025 — 2026",
 		title: "Java Developer — Inventory Management System",
 		org: "BSIT Second Year",
 		description:
@@ -46,21 +46,14 @@ const experiences = [
 		active: true,
 	},
 	{
-		period: "2022 — 2023",
+		period: "2025 — 2026",
 		title: "Full‑Stack Student Developer",
 		org: "Agusan School Project (All-Defense)",
 		description:
 			"Developed both a web application (Next.js) and a mobile app (Flutter) for Agusan School. This multi‑platform project was the most challenging of the year, strengthening skills in full‑stack development, UI/UX, and problem‑solving.",
 		active: true,
 	},
-	{
-		period: "2023 — Present",
-		title: "Frontend Developer",
-		org: "Freelance & Personal Projects",
-		description:
-			"Building responsive web and mobile applications using Next.js, React, Tailwind CSS, and Expo. Focused on clean UI, reusable components, and modern development workflows.",
-		active: true,
-	},
+	
 ];
 
 const education = [

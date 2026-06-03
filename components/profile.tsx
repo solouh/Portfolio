@@ -168,8 +168,21 @@ export default function Hero() {
 	}, [darkMode]);
 
 	return (
-		<div className="relative min-h-screen darbg-white dark:bg-[#0a0a0a] text-neutral-900 dark:text-white transition-colors duration-300 overflow-hidden">
+   
+      
+      <div className="relative min-h-screen darbg-white dark:bg-[#0a0a0a] text-neutral-900 dark:text-white transition-colors duration-300 overflow-hidden">
 			{/* Moon — top right */}
+      
+			{darkMode && (
+				<div 
+					className="hidden  dark:block absolute top-6 md:top-12 left-1/2 -translate-x-1/2 z-10 pointer-events-none"
+				>
+					<p className="text-[10px] md:text-lg font-bold tracking-[0.35em] uppercase text-neutral-500 dark:text-neutral-400/80 animate-pulse">
+						trust your self
+					</p>
+				</div>
+			)}
+
 			<svg
 				className="absolute top-6 right-6 md:top-12 md:right-20 w-14 h-14 md:w-20 md:h-20 text-yellow-100 dark:text-yellow-50 opacity-40 dark:opacity-90 pointer-events-none"
 				style={{
@@ -181,15 +194,15 @@ export default function Hero() {
 			>
 				<path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z" />
 			</svg>
-
+        
 			{/* Animated star background */}
 			<StarField isDark={darkMode} />
-
+        
 			{/* Foreground content */}
-			<div className="relative z-10 flex items-center justify-center px-6 py-12 min-h-screen">
+			<div className="relative z-10 flex items-center justify-center px-6 py-10 min-h-screen">
 				<div className="max-w-6xl w-full grid grid-cols-1 md:grid-cols-2 gap-28 items-center">
 					{/* Profile Image */}
-					<div className="relative flex justify-center md:justify-end">
+					<div className="relative mt-10 md:mt-0 flex justify-center md:justify-end">
 						<div className="relative transition-transform duration-200 ease-out hover:scale-105">
 							<div className="absolute -inset-1 rounded-lg bg-gradient-to-br from-orange-600/60 to-orange-900/40 blur-md dark:from-orange-600/80 dark:to-orange-900/60" />
 							<div className="relative rounded-lg overflow-hidden border-2 border-orange-700/50 dark:border-orange-600/70 shadow-2xl">
@@ -253,5 +266,7 @@ export default function Hero() {
 				</div>
 			</div>
 		</div>
+
+		
 	);
 }

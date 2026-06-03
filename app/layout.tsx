@@ -39,7 +39,7 @@ export default function RootLayout({
 				inter.variable,
 			)}
 		>
-			<body className="min-h-full flex flex-col mx-10 border mt-5">
+			<body suppressHydrationWarning className="min-h-full flex flex-col mx-10 mb-10 mt-5">
 				<ThemeProvider
 					attribute="class"
 					defaultTheme="dark"

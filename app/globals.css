@@ -2,6 +2,13 @@
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 
+@layer components {
+  .uiverse-btn {
+    @apply relative overflow-hidden bg-transparent border-none p-0;
+  }
+}
+
+
 @custom-variant dark (&:is(.dark *));
 
 @theme inline {
@@ -81,6 +88,10 @@
 	--sidebar-accent-foreground: oklch(0.205 0 0);
 	--sidebar-border: oklch(0.922 0 0);
 	--sidebar-ring: oklch(0.708 0 0);
+
+	/* Grid variables */
+	--grid-color: oklch(0.145 0 0 / 0.06);
+	--grid-size: 2.5rem;
 }
 
 .dark {
@@ -115,16 +126,96 @@
 	--sidebar-accent-foreground: oklch(0.985 0 0);
 	--sidebar-border: oklch(1 0 0 / 10%);
 	--sidebar-ring: oklch(0.556 0 0);
+
+	/* Grid variables */
+	--grid-color: oklch(0.985 0 0 / 0.06);
 }
 
 @layer base {
 	* {
 		@apply border-border outline-ring/50;
 	}
-	body {
-		@apply bg-background text-foreground;
-	}
+
+	/* Background color lives on html so the grid can show through transparent body */
 	html {
-		@apply font-sans;
+		@apply font-sans bg-background;
+	}
+
+	body {
+		@apply text-foreground relative;
+		z-index: 0; /* Creates a stacking context so ::before layers correctly */
+	}
+
+	/* Subtle background grid */
+	body::before {
+		content: "";
+		position: fixed;
+		inset: 0;
+		z-index: -1;
+		pointer-events: none;
+		background-image:
+			linear-gradient(to right, var(--grid-color) 1px, transparent 1px),
+			linear-gradient(to bottom, var(--grid-color) 1px, transparent 1px);
+		background-size: var(--grid-size) var(--grid-size);
+		mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
+		-webkit-mask-image: radial-gradient(ellipse at center, black 40%, transparent 80%);
 	}
 }
+
+/* Custom Uiverse-style button */
+.uiverse-btn {
+  position: relative;
+  padding: 15px 20px;
+  font-size: 16px;
+  background: transparent;
+  border: none;
+  color: #f0f0f0;
+  z-index: 1;
+  overflow: hidden;
+}
+
+.uiverse-btn::before,
+.uiverse-btn::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  z-index: -1;
+  transition: all 0.4s;
+}
+
+.uiverse-btn::before {
+  width: 100%;
+  height: 100%;
+  background: rgb(221, 102, 12);
+  border-radius: 10px;
+  transform: translate(0%, 0%);
+}
+
+.uiverse-btn::after {
+  width: 35px;
+  height: 35px;
+  background: #ffffff15;
+  backdrop-filter: blur(5px);
+  border-radius: 50px;
+  transform: translate(10px, 10px);
+}
+
+.uiverse-btn:hover::before {
+  width: 110%;
+  height: 110%;
+  transform: translate(5%, 20%);
+}
+
+.uiverse-btn:hover::after {
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  transform: translate(0, 0);
+}
+
+.uiverse-btn:active::after {
+  transition: 0s;
+  transform: translate(0, 5%);
+}
+
